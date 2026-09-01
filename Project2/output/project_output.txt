@@ -1,0 +1,216 @@
+
+========================================
+FRAUD DETECTION PROJECT 2
+========================================
+
+Dataset loaded successfully!
+
+========== FIRST 5 ROWS ==========
+  Transaction_ID   Amount  Time   Location Transaction_Type  Fraud
+0      TXN100000  1802.11  1383     Nagpur   Mobile Payment      0
+1      TXN100001   955.02   384  Hyderabad    Bank Transfer      0
+2      TXN100002  7595.79    55  Hyderabad    Bank Transfer      1
+3      TXN100003  5029.27   117  Bengaluru              POS      0
+4      TXN100004   867.70   899     Mumbai    Bank Transfer      0
+
+========== DATASET SHAPE ==========
+(5000, 6)
+
+========== DATASET INFORMATION ==========
+<class 'pandas.DataFrame'>
+RangeIndex: 5000 entries, 0 to 4999
+Data columns (total 6 columns):
+ #   Column            Non-Null Count  Dtype  
+---  ------            --------------  -----  
+ 0   Transaction_ID    5000 non-null   str    
+ 1   Amount            5000 non-null   float64
+ 2   Time              5000 non-null   int64  
+ 3   Location          5000 non-null   str    
+ 4   Transaction_Type  5000 non-null   str    
+ 5   Fraud             5000 non-null   int64  
+dtypes: float64(1), int64(2), str(3)
+memory usage: 234.5 KB
+
+========== STATISTICAL SUMMARY ==========
+             Amount         Time        Fraud
+count   5000.000000  5000.000000  5000.000000
+mean    1986.603592   725.898800     0.050000
+std     3018.908329   410.187603     0.217967
+min       42.890000     0.000000     0.000000
+25%      587.675000   375.000000     0.000000
+50%     1162.255000   728.000000     0.000000
+75%     2244.617500  1082.000000     0.000000
+max    75880.020000  1439.000000     1.000000
+
+========== COLUMN NAMES ==========
+['Transaction_ID', 'Amount', 'Time', 'Location', 'Transaction_Type', 'Fraud']
+
+========== MISSING VALUES ==========
+Transaction_ID      0
+Amount              0
+Time                0
+Location            0
+Transaction_Type    0
+Fraud               0
+dtype: int64
+
+Total Missing Values:
+0
+
+========== DUPLICATE ROWS ==========
+Duplicate Rows: 0
+
+========== FRAUD DISTRIBUTION ==========
+Fraud
+0    4750
+1     250
+Name: count, dtype: int64
+
+Fraud Percentage:
+Fraud
+0    95.0
+1     5.0
+Name: proportion, dtype: float64
+
+========== FEATURES ==========
+    Amount  Time   Location Transaction_Type
+0  1802.11  1383     Nagpur   Mobile Payment
+1   955.02   384  Hyderabad    Bank Transfer
+2  7595.79    55  Hyderabad    Bank Transfer
+3  5029.27   117  Bengaluru              POS
+4   867.70   899     Mumbai    Bank Transfer
+
+========== TARGET ==========
+0    0
+1    0
+2    1
+3    0
+4    0
+Name: Fraud, dtype: int64
+
+========== ENCODED FEATURES ==========
+    Amount  Time  ...  Transaction_Type_Online  Transaction_Type_POS
+0  1802.11  1383  ...                    False                 False
+1   955.02   384  ...                    False                 False
+2  7595.79    55  ...                    False                 False
+3  5029.27   117  ...                    False                  True
+4   867.70   899  ...                    False                 False
+
+[5 rows x 13 columns]
+
+Feature columns:
+['Amount', 'Time', 'Location_Bengaluru', 'Location_Delhi', 'Location_Hyderabad', 'Location_Mumbai', 'Location_Nagpur', 'Location_Nashik', 'Location_Pune', 'Transaction_Type_Bank Transfer', 'Transaction_Type_Mobile Payment', 'Transaction_Type_Online', 'Transaction_Type_POS']
+
+========== TRAIN TEST SPLIT ==========
+Training data: (4000, 13)
+Testing data: (1000, 13)
+
+Feature scaling completed!
+
+========== BEFORE SMOTE ==========
+Fraud
+0    3800
+1     200
+Name: count, dtype: int64
+
+========== AFTER SMOTE ==========
+Fraud
+0    3800
+1    3800
+Name: count, dtype: int64
+
+========================================
+LOGISTIC REGRESSION
+========================================
+
+Precision:
+0.13846153846153847
+
+Recall:
+0.54
+
+ROC-AUC:
+0.7474315789473684
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.97      0.82      0.89       950
+           1       0.14      0.54      0.22        50
+
+    accuracy                           0.81      1000
+   macro avg       0.55      0.68      0.56      1000
+weighted avg       0.93      0.81      0.86      1000
+
+
+========================================
+RANDOM FOREST
+========================================
+
+Precision:
+0.1095890410958904
+
+Recall:
+0.32
+
+ROC-AUC:
+0.6659578947368422
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0       0.96      0.86      0.91       950
+           1       0.11      0.32      0.16        50
+
+    accuracy                           0.84      1000
+   macro avg       0.53      0.59      0.54      1000
+weighted avg       0.92      0.84      0.87      1000
+
+
+========================================
+MODEL COMPARISON
+========================================
+                 Model  Precision  Recall   ROC-AUC
+0  Logistic Regression   0.138462    0.54  0.747432
+1        Random Forest   0.109589    0.32  0.665958
+
+Model results saved successfully!
+
+========================================
+TOP 10 IMPORTANT FEATURES
+========================================
+                            Feature  Importance
+0                            Amount    0.474495
+1                              Time    0.268118
+11          Transaction_Type_Online    0.038212
+9    Transaction_Type_Bank Transfer    0.035847
+12             Transaction_Type_POS    0.035237
+10  Transaction_Type_Mobile Payment    0.033850
+8                     Location_Pune    0.021175
+3                    Location_Delhi    0.018566
+4                Location_Hyderabad    0.017724
+6                   Location_Nagpur    0.015943
+
+Processed dataset saved successfully!
+Model predictions saved successfully!
+
+========================================
+PROJECT COMPLETED SUCCESSFULLY!
+========================================
+
+Final Model Results:
+                 Model  Precision  Recall   ROC-AUC
+0  Logistic Regression   0.138462    0.54  0.747432
+1        Random Forest   0.109589    0.32  0.665958
+
+Best ROC-AUC Model:
+Logistic Regression
+
+Terminal output saved in:
+output/project_output.txt
+
+Project output files saved in:
+output/
+
+Visualizations saved in:
+visualizations/
