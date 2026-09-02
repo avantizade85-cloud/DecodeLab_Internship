@@ -1,0 +1,39 @@
+========================================
+   CUSTOMER SEGMENTATION PROJECT
+========================================
+
+PROJECT: Unsupervised Learning - Customer Segmentation
+
+1. DATASET SUMMARY
+------------------
+Total Customers: 1000
+Total Features Used: 23
+
+2. PCA SUMMARY
+--------------
+Original Dimensions: 23
+Reduced Dimensions: 2
+Total Explained Variance: 0.1069
+
+3. CLUSTERING SUMMARY
+---------------------
+Optimal Number of Clusters: 2
+
+4. CLUSTER DISTRIBUTION
+-----------------------
+Cluster 0: 505 customers
+Cluster 1: 495 customers
+
+5. CUSTOMER PERSONAS
+--------------------
+Cluster 0: Affluent Low-Spending Customers (505 customers)
+Cluster 1: Budget Enthusiastic Customers (495 customers)
+
+6. BUSINESS INTERPRETATION
+---------------------------
+Customer segmentation helps identify groups of customers with similar characteristics.
+These segments can support targeted marketing, personalized offers and customer engagement strategies.
+
+7. CONCLUSION
+-------------
+PCA was used for dimensionality reduction and visualization. K-Means clustering was applied to identify customer groups. The Elbow Method and Silhouette Score were used to evaluate the appropriate number of clusters. The resulting clusters were translated into customer personas for business insights.
